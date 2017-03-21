@@ -7,6 +7,10 @@ a {
     text-decoration: none;
 }
 
+.detail-image {
+  width: 90%;
+}
+
 .logo-text {
     background: white;
     text-align: center;
@@ -22,7 +26,9 @@ a {
 }
 
 .thumbnail-item {
-    display: block;
+    display: inline-block;
+    width: 120px;
+
     border: 1px solid rgb(100%, 100%, 100%);
     border: 1px solid rgba(100%, 100%, 100%, 0.8);
 }
@@ -35,6 +41,9 @@ a {
 .thumbnail-list {
     list-style: none;
     padding: 0;
+
+    white-space: nowrap; /* Prevents wrapping to next line. */
+    overflow-x: auto; /* adds scrollbar along the horizontal space */
     /* Remove user agent stylesheet padding */
 }
 
