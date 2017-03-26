@@ -1,4 +1,15 @@
+html, body {
+    height: 100%;
+    /* Allows content to fill the browser or device window */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
+    /* swaps the main axis and cross axis */
     font-size: 10px;
     background: rgb(149, 194, 215);
 }
@@ -7,44 +18,55 @@ a {
     text-decoration: none;
 }
 
-.detail-image {
-  width: 90%;
+.main-header {
+    flex: 0 1 auto;
+    /* Best to use shorthand version flex: to not forget a property. */
 }
 
 .logo-text {
     background: white;
     text-align: center;
     text-transform: uppercase;
-
     font-family: 'Rubik', sans-serif;
     font-size: 37px;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    /* main content will grow as much as possible. shrink if it needs to. and auto will calcuilate the size */
+}
+
+.thumbnail-list {
+    flex: 0 1 auto;
+    order: 2;
+    /* changes order of flex items in the flex container */
+    display: flex;
+    /* this ul is now a flex container and the li's will be flex items */
+    justify-content: space-between;
+    /* lets a flex container control how flex items are drawn on main axis. space-between makes sure there is an even amoutn of spacing around each individual flex item. */
+    list-style: none;
+    padding: 0;
+    white-space: nowrap;
+    /* Prevents wrapping to next line. */
+    overflow-x: auto;
+    /* adds scrollbar along the horizontal space */
+    /* Remove user agent stylesheet padding */
+}
+
+.thumbnail-item {
+    display: inline-block;
+    min-width: 120px;
+    max-width: 120px;
+    /* setting min and max width removes variation in size */
+    border: 1px solid rgb(100%, 100%, 100%);
+    border: 1px solid rgba(100%, 100%, 100%, 0.8);
 }
 
 .thumbnail-image {
     display: block;
     width: 100%;
-}
-
-.thumbnail-item {
-    display: inline-block;
-    width: 120px;
-
-    border: 1px solid rgb(100%, 100%, 100%);
-    border: 1px solid rgba(100%, 100%, 100%, 0.8);
-}
-
-.thumbnail-item+.thumbnail-item {
-    margin-top: 10px;
-    /* targets all .thumbnail-items immediate preceded by .thumbnail -item. */
-}
-
-.thumbnail-list {
-    list-style: none;
-    padding: 0;
-
-    white-space: nowrap; /* Prevents wrapping to next line. */
-    overflow-x: auto; /* adds scrollbar along the horizontal space */
-    /* Remove user agent stylesheet padding */
 }
 
 .thumbnail-title {
@@ -54,4 +76,51 @@ a {
     background: rgb(96, 125, 139);
     color: rgb(202, 238, 255);
     font-size: 18px;
+}
+
+.detail-image-container {
+    flex: 1 1 auto;
+    display: flex;
+    /* so we can center the detail-image-frame flex item both horizontally and vertically */
+    justify-content: center;
+    /* centers flex item horizontally */
+    align-items: center;
+    /* centers flex item vertically */
+}
+
+.detail-image-frame {
+    position: relative;
+    text-align: center;
+}
+
+.detail-image {
+    width: 90%;
+}
+
+.detail-image-title {
+    position: absolute;
+    bottom: -16px;
+    left: 4px;
+    color: white;
+    font-size: 40px;
+    text-shadow: rgba(0, 0, 0, 0.9) 1px 2px 9px;
+}
+
+@media all and (min-width: 768px) {
+    /*  Styles will go here */
+    .main-content {
+        flex-direction: row;
+        overflow: hidden;
+    }
+    .thumbnail-list {
+        flex-direction: column;
+        order: 0;
+        margin-left: 20px;
+    }
+    .thumbnail-item {
+        max-width: 260px;
+    }
+    .thumbnail-item + .thumbnail-item {
+      margin-top: 20px;
+    }
 }
