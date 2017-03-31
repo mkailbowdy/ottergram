@@ -120,7 +120,7 @@ a {
     .thumbnail-item {
         max-width: 260px;
     }
-    .thumbnail-item + .thumbnail-item {
-      margin-top: 20px;
+    .thumbnail-item+.thumbnail-item {
+        margin-top: 20px;
     }
 }
